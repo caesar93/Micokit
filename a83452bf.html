@@ -148,7 +148,7 @@
 
         function led_on() {
             var topic = device_id+'/in/write';
-            var commond = '{"rgbled_switch":true,"rgbled_red":RBG_Red,"rgbled_red":RBG_Green,"rgbled_red":RBG_Blue}';
+            var commond = '{"rgbled_switch":true,"rgbled_red":RBG_Red,"rgbled_green":RBG_Green,"rgbled_blue":RBG_Blue}';
             client.publish(topic, commond);
         }
         // document.querySelector('#led_on').addEventListener('touchstart', led_on);
