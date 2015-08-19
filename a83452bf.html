@@ -44,14 +44,11 @@
      </button>
  </div>
 
-
-<div class="input">
-	<p>请输入RGB值：</p>
-	<p>RBG_Red:<input type="int" name="RBG_Red" style="background:Red; color:black" /></p>
-	<p>RBG_Red:<input type="int" name="RBG_Green" style="background:green; color:black" /></p>
-	<p>RBG_Red:<input type="int" name="RBG_Blue" style="background:blue; color:black" /></p>
-</div>
-
+ <div class="button-bar">
+     <a class="button" style="background:red; color:white" id="led_red">Red</a>
+     <a class="button" style="background:green; color:white" id="led_green">Green</a>
+     <a class="button" style="background:blue; color:white" id="led_blue">Blue</a>
+ </div>
  <div class="button-bar">
      <a class="button" style="background:white; color:black" id="led_on">On</a>
      <a class="button" style="background:black; color:white" id="led_off">Off</a>
@@ -148,7 +145,7 @@
 
         function led_on() {
             var topic = device_id+'/in/write';
-            var commond = '{"rgbled_switch":true,"rgbled_red":RBG_Red,"rgbled_green":RBG_Green,"rgbled_blue":RBG_Blue}';
+            var commond = '{"rgbled_switch":true}';
             client.publish(topic, commond);
         }
         // document.querySelector('#led_on').addEventListener('touchstart', led_on);
@@ -162,7 +159,7 @@
         // document.querySelector('#led_off').addEventListener('touchstart', led_off);
         document.querySelector('#led_off').addEventListener('click', led_off);
 
-<!--         function led_red() {
+        function led_red() {
             var topic = device_id+'/in/write';
             var commond = '{"rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":100, "rgbled_brightness":100}'; 
             client.publish(topic, commond);
@@ -184,7 +181,7 @@
             client.publish(topic, commond);
         }
         // document.querySelector('#led_blue').addEventListener('touchstart', led_blue);
-        document.querySelector('#led_blue').addEventListener('click', led_blue); -->
+        document.querySelector('#led_blue').addEventListener('click', led_blue);
     }
 
     // 日志打印在页面的部分    
