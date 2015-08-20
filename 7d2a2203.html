@@ -147,13 +147,10 @@
             var topic = device_id+'/in/write';
             
 			var hues = document.getElementById("led_hues").value;
-			var saturation = document.getElementById("led_saturation").value;;
-			var brightness = document.getElementById("led_brightness").value;;
-			var temp = '{"rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":0, "rgbled_brightness":0}';
-			temp.rgbled_hues = hues;
-			temp.rgbled_saturation = saturation;
-			temp.rgbled_brightness = brightness;
-			var command = temp.toJSONString();
+			var saturation = document.getElementById("led_saturation").value;
+			var brightness = document.getElementById("led_brightness").value;
+			var temp = {"rgbled_switch":true,"rgbled_hues":hues, "rgbled_saturation":saturation, "rgbled_brightness":brightness};
+			var command = JSON.stringify(temp);
             client.publish(topic, commond);
         }
         // document.querySelector('#led_on').addEventListener('touchstart', led_on);
