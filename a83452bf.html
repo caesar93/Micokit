@@ -46,10 +46,9 @@
 
 
 <div class="input">
-	<p>请输入RGB值：</p>
-	<p>RBG_Red:<input type="int" name="RBG_Red" style="background:Red; color:black" /></p>
-	<p>RBG_Red:<input type="int" name="RBG_Green" style="background:green; color:black" /></p>
-	<p>RBG_Red:<input type="int" name="RBG_Blue" style="background:blue; color:black" /></p>
+     <input type="number" id="led_red" value="0" min="0" max="255" style="background:red; color:black" >
+     <input type="number" id="led_green" value="0" min="0" max="255" style="background:green; color:black">
+     <input type="number" id="led_blue" value="0" min="0" max="255" style="background:blue; color:black">
 </div>
 
  <div class="button-bar">
@@ -148,7 +147,10 @@
 
         function led_on() {
             var topic = device_id+'/in/write';
-            var commond = '{"rgbled_switch":true,"rgbled_red":RBG_Red,"rgbled_green":RBG_Green,"rgbled_blue":RBG_Blue}';
+			var rgb_red = document.getElementById("led_red").value;
+			var rgb_green = document.getElementById("led_green").value;
+			var rgb_blue = document.getElementById("led_blue").value;
+            var commond = '{"rgbled_switch":true,"rgbled_red":rgb_red,"rgbled_green":rgb_green,"rgbled_blue":rgb_blue}';
             client.publish(topic, commond);
         }
         // document.querySelector('#led_on').addEventListener('touchstart', led_on);
