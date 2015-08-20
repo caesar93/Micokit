@@ -50,10 +50,9 @@
 	亮度：<input type="number" id="led_brightness" value="0" min="0" max="100" >
 </div> 
  <div class="button-bar">
-     <!-- <a class="button" style="background:white; color:black" id="led_on">On</a>
-     <a class="button" style="background:black; color:white" id="led_off">Off</a> -->
-	 <button onclick="led_on()">ON</button>
-	 <button onclick="led_on()">OFF</button>
+     <a class="button" style="background:white; color:black" id="led_on">On</a>
+     <a class="button" style="background:black; color:white" id="led_off">Off</a>
+
  </div>
 </div>
 
@@ -153,7 +152,7 @@
 			var brightness = document.getElementById("led_brightness").value;
 			var temp = {"rgbled_switch":true,"rgbled_hues":hues, "rgbled_saturation":saturation, "rgbled_brightness":brightness};
 			var command = JSON.stringify(temp);
-            client.publish(topic, commond);
+            client.publish(topic, temp);
         }
         // document.querySelector('#led_on').addEventListener('touchstart', led_on);
         document.querySelector('#led_on').addEventListener('click', led_on);
