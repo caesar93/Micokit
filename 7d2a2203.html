@@ -44,6 +44,11 @@
      </button>
  </div>
 
+<div class="input-bar">
+	色相<input type="number" id="led_hues" value="0" min="0" max="360" >
+	饱和度：<input type="number" id="led_saturation" value="0" min="0" max="100" >
+	亮度：<input type="number" id="led_brightness" value="0" min="0" max="100" >
+</div> 
  <div class="button-bar">
      <a class="button" style="background:red; color:white" id="led_red">Red</a>
      <a class="button" style="background:green; color:white" id="led_green">Green</a>
@@ -145,7 +150,11 @@
 
         function led_on() {
             var topic = device_id+'/in/write';
-            var commond = '{"rgbled_switch":true}';
+            
+			var hues = document.getElementById("led_hues").value;
+			var saturation = document.getElementById("led_saturation").value;;
+			var brightness = document.getElementById("led_brightness").value;;
+			var commond = '{"rgbled_switch":true,"rgbled_hues":hues, "rgbled_saturation":saturation, "rgbled_brightness":brightness}'; ;
             client.publish(topic, commond);
         }
         // document.querySelector('#led_on').addEventListener('touchstart', led_on);
