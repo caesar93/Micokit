@@ -57,6 +57,7 @@
 </div>
 
 <script src="http://api.easylink.io/assets/js/mqttws31.js"></script>
+<script src="json2.js"></script>
 <script>
     // 从url中获取某个参数的值
     function getParameterByName(name) {
@@ -152,7 +153,7 @@
 			var brightness = document.getElementById("led_brightness").value;
 			var temp = {"rgbled_switch":true,"rgbled_hues":hues, "rgbled_saturation":saturation, "rgbled_brightness":brightness};
 			var command = JSON.stringify(temp);
-            client.publish(topic, temp);
+            client.publish(topic, command);
         }
         // document.querySelector('#led_on').addEventListener('touchstart', led_on);
         document.querySelector('#led_on').addEventListener('click', led_on);
