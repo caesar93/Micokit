@@ -50,11 +50,6 @@
 	亮度：<input type="number" id="led_brightness" value="0" min="0" max="100" >
 </div> 
  <div class="button-bar">
-     <a class="button" style="background:red; color:white" id="led_red">Red</a>
-     <a class="button" style="background:green; color:white" id="led_green">Green</a>
-     <a class="button" style="background:blue; color:white" id="led_blue">Blue</a>
- </div>
- <div class="button-bar">
      <a class="button" style="background:white; color:black" id="led_on">On</a>
      <a class="button" style="background:black; color:white" id="led_off">Off</a>
  </div>
@@ -154,7 +149,11 @@
 			var hues = document.getElementById("led_hues").value;
 			var saturation = document.getElementById("led_saturation").value;;
 			var brightness = document.getElementById("led_brightness").value;;
-			var commond = '{"rgbled_switch":true,"rgbled_hues":hues, "rgbled_saturation":saturation, "rgbled_brightness":brightness}'; ;
+			var temp = '{"rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":0, "rgbled_brightness":0}';
+			temp.rgbled_hues = hues;
+			temp.rgbled_saturation = saturation;
+			temp.rgbled_brightness = brightness;
+			var command = temp.toJSONString();
             client.publish(topic, commond);
         }
         // document.querySelector('#led_on').addEventListener('touchstart', led_on);
