@@ -154,11 +154,11 @@
         function led_on() {
             var topic = device_id+'/in/write';
             
-			<!-- var hues = document.getElementById("led_hues").value;
-			var saturation = document.getElementById("led_saturation").value;
-			var brightness = document.getElementById("led_brightness").value;
-			var temp = {"rgbled_switch":true,"ledrgb_red":hues, "rgbled_saturation":saturation, "rgbled_brightness":brightness};
-			var command = JSON.stringify(temp); -->
+//			var hues = document.getElementById("led_hues").value;
+//			var saturation = document.getElementById("led_saturation").value;
+//			var brightness = document.getElementById("led_brightness").value;
+//			var temp = {"rgbled_switch":true,"ledrgb_red":hues, "rgbled_saturation":saturation, "rgbled_brightness":brightness};
+//			var command = JSON.stringify(temp); 
 			
 			var command = '{"rgbled_switch":true,"ledrgb_red":255,"ledrgb_green":0,"ledrgb_blue":0}';
             client.publish(topic, command);
