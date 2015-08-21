@@ -45,12 +45,13 @@
  </div>
 
 <div class="input-color">
-     <input type="color" id="ledColor" value = #ff0000 list="colorlist"">
+     <input type="color" id="ledColor" value = #ff0000 list="colorlist""/>
 	 <datalist id="colorlist">
          <option>#ff0000</option>
          <option>#00ff00</option>
          <option>#0000ff</option>
 	 </datalist>
+	 <input type="text" id="ctemp"/>
 </div> 
  <div class="button-bar">
      <a class="button" style="background:white; color:black" id="led_on">On</a>
@@ -196,6 +197,7 @@
 			strs = colorrgb.split(",");
 			var temp = {"rgbled_switch":true,"rgbled_red":strs[0],"rgbled_green":strs[1],"rgbled_blue":strs[2]};
 			var command = JSON.stringify(temp);
+			ctemp.value = command;
 			client.publish(topic, commond);
         }
 
