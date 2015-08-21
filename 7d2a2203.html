@@ -195,10 +195,7 @@
 			var colorrgb = colorhex.hex2Rgb();
 			var strs= new Array();
 			strs = colorrgb.split(",");
-			var cred = parseInt(strs[0]);
-			var cgreen = parseInt(strs[1]);
-			var cblue = parseInt(strs[2]);
-			var temp = {"rgbled_switch":true,"rgbled_red":cred,"rgbled_green":cgreen,"rgbled_blue":cblue};
+			var temp = {"rgbled_switch":true,"rgbled_red":parseInt(strs[0],"rgbled_green":strs[1],"rgbled_blue":strs[2]};
 			var command = JSON.stringify(temp);
 			ctemp.value = command;
 			client.publish(topic, commond);
