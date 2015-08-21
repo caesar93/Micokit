@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
-    <title>MiCOKit Study</title>
+    <title>MiCOKit Study - RGB</title>
     <link href="//code.ionicframework.com/1.0.0-beta.13/css/ionic.css" rel="stylesheet">
     <style>
         #debug {
@@ -157,10 +157,10 @@
 			<!-- var hues = document.getElementById("led_hues").value;
 			var saturation = document.getElementById("led_saturation").value;
 			var brightness = document.getElementById("led_brightness").value;
-			var temp = {"rgbled_switch":true,"rgbled_hues":hues, "rgbled_saturation":saturation, "rgbled_brightness":brightness};
+			var temp = {"rgbled_switch":true,"ledrgb_red":hues, "rgbled_saturation":saturation, "rgbled_brightness":brightness};
 			var command = JSON.stringify(temp); -->
 			
-			var command = '{"rgbled_switch":true}';
+			var command = '{"rgbled_switch":true,"ledrgb_red":255,"ledrgb_green":0,"ledrgb_blue":0}';
             client.publish(topic, command);
         }
         // document.querySelector('#led_on').addEventListener('touchstart', led_on);
@@ -190,7 +190,7 @@
 			var colorrgb = colorhex.hex2Rgb();
 			var strs= new Array();
 			strs = colorrgb.split(",");
-			var command = {"rgbled_switch":true,"ledrggb_red":strs[0],"ledrggb_green":strs[1],"ledrggb_blue":strs[2]};
+			var command = {"rgbled_switch":true,"ledrgb_red":strs[0],"ledrgb_green":strs[1],"ledrgb_blue":strs[2]};
 			client.publish(topic, commond);
         }
 		//增加led_off click事件
