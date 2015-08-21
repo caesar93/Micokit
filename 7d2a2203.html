@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
-    <title>MiCOKit08</title>
+    <title>MiCOKit Study</title>
     <link href="//code.ionicframework.com/1.0.0-beta.13/css/ionic.css" rel="stylesheet">
     <style>
         #debug {
@@ -44,10 +44,13 @@
      </button>
  </div>
 
-<div class="input-bar">
-	色相:<input type="number" id="led_hues" value="0" min="0" max="360" >
-	饱和度：<input type="number" id="led_saturation" value="0" min="0" max="100" >
-	亮度：<input type="number" id="led_brightness" value="0" min="0" max="100" >
+<div class="input-color">
+     <input type="color" id="ledColor" value = #ff0000 list="colorlist"">
+	 <datalist id="colorlist">
+         <option>#ff0000</option>
+         <option>#00ff00</option>
+         <option>#0000ff</option>
+	 </datalist>
 </div> 
  <div class="button-bar">
      <a class="button" style="background:white; color:black" id="led_on">On</a>
@@ -57,7 +60,10 @@
 </div>
 
 <script src="http://api.easylink.io/assets/js/mqttws31.js"></script>
-<script src="json2.js"></script>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="js/json2.js"></script>
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/color.js"></script>
 <script>
     // 从url中获取某个参数的值
     function getParameterByName(name) {
@@ -148,11 +154,13 @@
         function led_on() {
             var topic = device_id+'/in/write';
             
-			var hues = document.getElementById("led_hues").value;
+			<!-- var hues = document.getElementById("led_hues").value;
 			var saturation = document.getElementById("led_saturation").value;
 			var brightness = document.getElementById("led_brightness").value;
 			var temp = {"rgbled_switch":true,"rgbled_hues":hues, "rgbled_saturation":saturation, "rgbled_brightness":brightness};
-			var command = JSON.stringify(temp);
+			var command = JSON.stringify(temp); -->
+			
+			var command = '{"rgbled_switch":true}';
             client.publish(topic, command);
         }
         // document.querySelector('#led_on').addEventListener('touchstart', led_on);
@@ -165,7 +173,33 @@
         }
         // document.querySelector('#led_off').addEventListener('touchstart', led_off);
         document.querySelector('#led_off').addEventListener('click', led_off);
-
+        
+		//IE
+		ledColor.onpropertychange=function(){
+		    ledColorChange();
+		}
+		// FF/Opera/Safari/Netscape
+		ledColor.oninput=function(){
+		    ledColorChange();
+		}
+		
+		function ledColorChange(){
+		    var topic = device_id+'/in/write';
+		    var topic = device_id+'/in/write';
+			var colorhex = ledColor.value;
+			var colorrgb = colorhex.hex2Rgb();
+			var strs= new Array();
+			strs = colorrgb.split(",");
+			var command = {"rgbled_switch":true,"ledrggb_red":strs[0],"ledrggb_green":strs[1],"ledrggb_blue":strs[2]};
+			client.publish(topic, commond);
+        }
+		//增加led_off click事件
+		document.querySelector('#led_off').addEventListener('click', led_off);
+		
+		
+		
+		
+		
     }
 
     // 日志打印在页面的部分    
