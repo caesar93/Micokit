@@ -185,7 +185,6 @@
 		
 		function ledColorChange(){
 		    var topic = device_id+'/in/write';
-		    var topic = device_id+'/in/write';
 			var colorhex = ledColor.value;
 			var colorrgb = colorhex.hex2Rgb();
 			var strs= new Array();
@@ -193,10 +192,7 @@
 			var command = {"rgbled_switch":true,"ledrgb_red":strs[0],"ledrgb_green":strs[1],"ledrgb_blue":strs[2]};
 			client.publish(topic, commond);
         }
-		//增加led_off click事件
-		document.querySelector('#led_off').addEventListener('click', led_off);
-		
-		
+
 		
 		
 		
