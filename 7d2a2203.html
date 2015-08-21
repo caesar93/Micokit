@@ -163,7 +163,8 @@
 			var colorrgb = colorhex.hex2Rgb();
 			var strs= new Array();
 			strs = colorrgb.split(",");
-			var command = {"rgbled_switch":true,"rgbled_red":strs[0],"rgbled_green":strs[1],"rgbled_blue":strs[2]};
+			var temp = {"rgbled_switch":true,"rgbled_red":strs[0],"rgbled_green":strs[1],"rgbled_blue":strs[2]};
+			var command = JSON.stringify(temp);
 			//var command = '{"rgbled_switch":true,"rgbled_red":255,"rgbled_green":0,"rgbled_blue":0}';
             client.publish(topic, command);
         }
@@ -193,7 +194,8 @@
 			var colorrgb = colorhex.hex2Rgb();
 			var strs= new Array();
 			strs = colorrgb.split(",");
-			var command = {"rgbled_switch":true,"rgbled_red":strs[0],"rgbled_green":strs[1],"rgbled_blue":strs[2]};
+			var temp = {"rgbled_switch":true,"rgbled_red":strs[0],"rgbled_green":strs[1],"rgbled_blue":strs[2]};
+			var command = JSON.stringify(temp);
 			client.publish(topic, commond);
         }
 
